@@ -6,7 +6,6 @@ using PosePassword;
 
 int FirstUserInput = 0;
 int SaveInfo = 0;
-int IDUserInput = 0;
 const string CardFile = "CardModel.csv";
 const string PasswordFile = "Password.csv";
 
@@ -70,7 +69,7 @@ switch (FirstUserInput)
         TransactionProccess TransactionResult2 = new TransactionProccess(
             Password2, InputPassword2, Amount);
         TransactionProccess SaveInformation = new TransactionProccess(convertedCardType, SaveInfo);
-
+        
         break;
     default:
         Console.WriteLine("Your number is out of reach");
