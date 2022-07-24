@@ -11,7 +11,7 @@ namespace PosePassword
 {
     public class TransactionProccess
     {
-
+        public int FlagSaveInfo { get; set; }
         public TransactionProccess(List<PasswordModel> Password, string? InputPassword,decimal Amount) 
         {
             int CurrentId = Password.OrderByDescending(x => x.Id).First().Id;
@@ -25,7 +25,7 @@ namespace PosePassword
                         ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "succeed");
                         TextConnection TransactionTextFile = new TextConnection();
                         TransactionTextFile.Transaction(ToTransaction);
-
+                        FlagSaveInfo = 1;
                     }
                     else
                     {
@@ -38,10 +38,8 @@ namespace PosePassword
                 }
             }
         }
-        public TransactionProccess(ConvertCardType cardModel,int Save)
+        public TransactionProccess(ConvertCardType cardModel)
         {
-            if (Save == 1)
-            {
                 Console.WriteLine("do you want to save your card enterd information\n1.Yes\n2.No");
                 int InputResult = Convert.ToInt32(Console.ReadLine());
                 if (InputResult == 1)
@@ -49,7 +47,7 @@ namespace PosePassword
                     TextConnection CardtextFile = new TextConnection();
                     CardtextFile.CreatCard(cardModel);
                 }
-            }
+            
         }
     }
 }

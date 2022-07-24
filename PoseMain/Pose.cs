@@ -5,7 +5,7 @@ using PoseLibrary.Models;
 using PosePassword;
 
 int FirstUserInput = 0;
-int SaveInfo = 0;
+
 const string CardFile = "CardModel.csv";
 const string PasswordFile = "Password.csv";
 
@@ -65,11 +65,14 @@ switch (FirstUserInput)
         string? InputPassword2 = Console.ReadLine();
         List<PasswordModel> Password2 = PasswordFile.FullFilePath().
                     LoadFile().ConvertToPasswordModel();
-        SaveInfo=1;
+        
         TransactionProccess TransactionResult2 = new TransactionProccess(
             Password2, InputPassword2, Amount);
-        TransactionProccess SaveInformation = new TransactionProccess(convertedCardType, SaveInfo);
-        
+            //check to see if transaction succeed then ask for saving card info
+        if (TransactionResult2.FlagSaveInfo == 1)
+        {
+            TransactionProccess SaveInformation = new TransactionProccess(convertedCardType);
+        }
         break;
     default:
         Console.WriteLine("Your number is out of reach");
