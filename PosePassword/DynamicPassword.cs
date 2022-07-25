@@ -4,9 +4,10 @@ using PoseLibrary.DataAccess.TextHelpers;
 using PoseLibrary.Models;
 using PosePassword;
 
+const string CardFile = "CardModel.csv";
 Console.WriteLine("Welcome to password application");
 Console.WriteLine("please enter the number of your desire option(1 or 2)\n");
-Console.WriteLine("1.Creat a new card\n2.choose a saved card and generate password");
+Console.WriteLine("1.Creat a new card\n2.choose a saved card and generate password\n3.edit a card information\n4.remove a card");
 int FirstUserInput = 0;
 
 try
@@ -34,6 +35,13 @@ switch (FirstUserInput)
         var Cardshow = new ShowListCard();
         Cardshow.ShowInfo();
         password();
+        break;
+    case 3: // edit the card info 
+        var Cardshow2 = new ShowListCard();
+        Cardshow2.ShowInfo();
+        var EditCard = new EditCard();
+        var Cards = EditCard.EditCards(Cardshow2.CardOption,Cardshow2.Cards);
+        Cards.SaveToCardFile(CardFile);
         break;
     default:
         Console.WriteLine("Your number is out of reach");
