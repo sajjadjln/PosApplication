@@ -13,7 +13,7 @@ namespace PosePassword
     public class ShowListCard : TextConnection
     {
         public int CardOption { get; set; }
-        public List<CardModel>? Cards { get; set; }
+        public List<CardModel> Cards { get; set; } = new List<CardModel>();
         public void ShowInfo() 
         {
             List<CardModel> Card = CardFile.FullFilePath().LoadFile().ConvertToCardModel();
