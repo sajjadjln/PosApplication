@@ -11,10 +11,14 @@ namespace PosePassword
     {
         public static ConvertCardType CardInputInfo()
         {
+            string CardNumberInputtrimmed = "";
             Console.WriteLine("please Enter your card number: ");
             string? CardNumberInput = Console.ReadLine();
-            string CardNumberInputtrimmed = String.Concat(
+            if(CardNumberInput!=null) // to remove null warning for CardNumberInput
+            {
+            CardNumberInputtrimmed = String.Concat(
             CardNumberInput.Where(c => !Char.IsWhiteSpace(c)));
+            }
             Console.WriteLine("please Enter your Cvv2 number: ");
             string? Cvv2Input = Console.ReadLine();
             Console.WriteLine("please Enter your card expire month date: ");
