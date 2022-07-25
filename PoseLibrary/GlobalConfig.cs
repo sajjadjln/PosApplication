@@ -13,7 +13,7 @@ namespace PoseLibrary
         /// holds any sort of connection
         /// </summary>
         public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();
-        // why it does not accept  new IDataConnection(); but accept whit list 
+         
         public static void InitilizeConnection()
         { 
             TextConnection text = new TextConnection();
