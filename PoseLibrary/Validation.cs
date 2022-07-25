@@ -24,7 +24,7 @@
                 bool a = Char.IsDigit(i);
                 if (a == false)
                 {
-                    throw new ArgumentException("wrong cart number\n please enter right number");
+                    throw new ArgumentException("wrong cart number!");
                 }
             }
         }
