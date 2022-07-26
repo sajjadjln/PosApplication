@@ -14,8 +14,8 @@ namespace PoseLibrary
         public ConvertCardType(string? cardNumber, string? cvv2, string? dateMonth, string? dateYear)
         {
             CardNumber = cardNumber;
-            
-            
+
+
             int Cvv2NumberValue = int.TryParse(cvv2, out Cvv2NumberValue) ? Cvv2NumberValue : 0;
             //int.TryParse(cvv2, out int Cvv2NumberValue);
             Cvv2 = Cvv2NumberValue;
@@ -27,7 +27,7 @@ namespace PoseLibrary
             DateYear = DateYearNumberValue;
             if (Cvv2 == 0 || DateMonth == 0 || DateYear == 0 || CardNumber == null)
             {
-                throw new Exception("an error occured check your entry numbers and try again");
+                throw new Exception("an error occurred check your entry numbers and try again");
             }
         }
     }

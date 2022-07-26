@@ -46,7 +46,7 @@ switch (FirstUserInput)
                 string? InputPassword = Console.ReadLine();
                 List<PasswordModel> Password = PasswordFile.FullFilePath().
                     LoadFile().ConvertToPasswordModel();
-                TransactionProccess TransactionResult = new TransactionProccess(
+                TransactionProcess TransactionResult = new TransactionProcess(
                     Password, InputPassword,Amount);
             }
         }
@@ -66,12 +66,12 @@ switch (FirstUserInput)
         List<PasswordModel> Password2 = PasswordFile.FullFilePath().
                     LoadFile().ConvertToPasswordModel();
         
-        TransactionProccess TransactionResult2 = new TransactionProccess(
+        TransactionProcess TransactionResult2 = new TransactionProcess(
             Password2, InputPassword2, Amount);
             //check to see if transaction succeed then ask for saving card info
         if (TransactionResult2.FlagSaveInfo == 1)
         {
-            TransactionProccess SaveInformation = new TransactionProccess(convertedCardType);
+            TransactionProcess SaveInformation = new TransactionProcess(convertedCardType);
         }
         break;
     default:

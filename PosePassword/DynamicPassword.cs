@@ -7,7 +7,7 @@ using PosePassword;
 const string CardFile = "CardModel.csv";
 Console.WriteLine("Welcome to password application");
 Console.WriteLine("please enter the number of your desire option(1 or 2)\n");
-Console.WriteLine("1.Creat a new card\n2.choose a saved card and generate password\n3.edit a card information\n4.remove a card");
+Console.WriteLine("1.Create a new card\n2.choose a saved card and generate password\n3.edit a card information\n4.remove a card");
 int FirstUserInput = 0;
 
 try
@@ -22,25 +22,25 @@ catch (FormatException)
 
 switch (FirstUserInput)
 {
-    case 1://creat new card
+    case 1://create new card
 
        var convertedCardType = CardInput.CardInputInfo();
-       TextConnection CardtextFile = new TextConnection();
-        CardtextFile.CreatCard(convertedCardType);
+       TextConnection CardTextFile = new TextConnection();
+        CardTextFile.CreateCard(convertedCardType);
         break;
 
     case 2:// show the list of cards
            // how to access field CardFile in TextConnection class
 
-        var Cardshow = new ShowListCard();
-        Cardshow.ShowInfo();
+        var CardShow = new ShowListCard();
+        CardShow.ShowInfo();
         password();
         break;
-    case 3: // edit the card info 
-        var Cardshow2 = new ShowListCard();
-        Cardshow2.ShowInfo();
+    case 3: // edit the card info
+        var CardShow2 = new ShowListCard();
+        CardShow2.ShowInfo();
         var EditCard = new EditCard();
-        var Cards = EditCard.EditCards(Cardshow2.CardOption,Cardshow2.Cards);
+        var Cards = EditCard.EditCards(CardShow2.CardOption,CardShow2.Cards);
         Cards.SaveToCardFile(CardFile);
         break;
     default:
@@ -48,14 +48,14 @@ switch (FirstUserInput)
         break;
 }
 
- void password() 
+ void password()
 {
 
      Random generator = new Random();
      String r = generator.Next(0, 1000000).ToString("D6");
      Console.WriteLine($"this is your password : {r}");
-     TextConnection PasswordtextFile = new TextConnection();
+     TextConnection PasswordTextFile = new TextConnection();
      ConvertToPassword password = new ConvertToPassword(r);
-     PasswordtextFile.CreatPassword(password);
-     
+     PasswordTextFile.CreatePassword(password);
+
 }

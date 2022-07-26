@@ -8,9 +8,9 @@ namespace PoseLibrary.DataAccess
 {
     public interface IDataConnection
     {
-        Models.CardModel CreatCard(Models.CardModel model);
+        Models.CardModel CreateCard(Models.CardModel model);
         Models.TransactionModel Transaction(Models.TransactionModel model);
-        Models.PasswordModel CreatPassword(Models.PasswordModel model);
-        
+        Models.PasswordModel CreatePassword(Models.PasswordModel model);
+
     }
 }

@@ -11,12 +11,12 @@ namespace PosePassword
     {
         public static ConvertCardType CardInputInfo()
         {
-            string CardNumberInputtrimmed = "";
+            string CardNumberInputTrimmed = "";
             Console.WriteLine("please Enter your card number: ");
             string? CardNumberInput = Console.ReadLine();
             if(CardNumberInput!=null) // to remove null warning for CardNumberInput
             {
-            CardNumberInputtrimmed = String.Concat(
+            CardNumberInputTrimmed = String.Concat(
             CardNumberInput.Where(c => !Char.IsWhiteSpace(c)));
             }
             Console.WriteLine("please Enter your Cvv2 number: ");
@@ -28,7 +28,7 @@ namespace PosePassword
 
             //converting all the input string types to CardModel types
             ConvertCardType convertedCardType = new ConvertCardType(
-                CardNumberInputtrimmed,
+                CardNumberInputTrimmed,
                 Cvv2Input,
                 DateMonthInput,
                 DateYearInput);
@@ -39,6 +39,6 @@ namespace PosePassword
             Validation.ValidationDateMonth(convertedCardType.DateMonth);
             Validation.ValidationDateYear(convertedCardType.DateYear);
             return convertedCardType;
-        } 
+        }
     }
 }

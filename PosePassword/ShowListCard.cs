@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PosePassword 
+namespace PosePassword
 {
-    
+
     public class ShowListCard : TextConnection
     {
         public int CardOption { get; set; }
         public List<CardModel> Cards { get; set; } = new List<CardModel>();
-        public void ShowInfo() 
+        public void ShowInfo()
         {
             List<CardModel> Card = CardFile.FullFilePath().LoadFile().ConvertToCardModel();
             Cards = Card;

@@ -3,12 +3,8 @@
     public class Validation
     {
         /// <summary>
-        /// this method validates the cart number 
+        /// this method validates the cart number
         /// </summary>
-        /// <param name="CartNumber">string of numbers</param>
-        /// <exception cref="ArgumentException">if cart number wasnt the 16 digits 
-        /// and if any digit wasnt numeric
-        /// </exception>
         public static void ValidationCartNumber(string? cardNumber)
         {
             if (cardNumber == null)
@@ -31,8 +27,6 @@
         /// <summary>
         /// this method validates Cvv2
         /// </summary>
-        /// <param name="cvv2">3 or 4 digit number</param>
-        /// <exception cref="ArgumentException">if the lenght of number wasnt right </exception>
         public static void ValidationCvv2(int cvv2)
         {
             double Cvv2Count = Math.Floor(Math.Log10(cvv2) + 1);
@@ -45,7 +39,6 @@
         /// <summary>
         /// this method validates DateMonth and DateYear
         /// </summary>
-        /// <exception cref="ArgumentException">if the lenght of number wasnt right</exception>
         public static void ValidationDateMonth(int dateMonth)
         {
             double DateCount = Math.Floor(Math.Log10(dateMonth) + 1);
@@ -62,7 +55,7 @@
                 throw new ArgumentException("wrong Date");
             }
         }
-        
+
         public static void ValidationPassword(int password)
         {
             double PasswordCount = Math.Floor(Math.Log10(password) + 1);

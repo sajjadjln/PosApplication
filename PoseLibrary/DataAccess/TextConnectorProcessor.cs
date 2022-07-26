@@ -11,11 +11,11 @@ namespace PoseLibrary.DataAccess.TextHelpers
     public static class TextConnectorProcessor
     {
         /// <summary>
-        /// this extention method asks for the filename and gives you the full path
+        /// this extension method asks for the filename and gives you the full path
         /// </summary>
-        public static string FullFilePath(this string fileName) 
+        public static string FullFilePath(this string fileName)
         {
-            // adding a key=filePath and its valye to appseting      
+            // adding a key=filePath and its value to AppSetting
             /*var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings.Add("filePath", "F:\\c#_projects\\POS_project\\Data");
             config.Save(ConfigurationSaveMode.Modified);
@@ -94,31 +94,31 @@ namespace PoseLibrary.DataAccess.TextHelpers
         /// and we take filename and convert it to the full path
         /// and we write our list to the file
         /// </summary>
-        public static void SaveToCardFile(this List<CardModel> models, string fileName) 
+        public static void SaveToCardFile(this List<CardModel> models, string fileName)
         {
             List<string> lines = new List<string>();
 
-            foreach (CardModel p in models) 
+            foreach (CardModel p in models)
             {
                 lines.Add($"{p.Id},{p.CardNumber},{p.DateMonth},{p.DateYear},{p.Cvv2}");
             }
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
-        public static void SaveToTransactionFile(this List<TransactionModel> models, string fileName) 
+        public static void SaveToTransactionFile(this List<TransactionModel> models, string fileName)
         {
             List<string> lines = new List<string>();
 
-            foreach (TransactionModel p in models) 
+            foreach (TransactionModel p in models)
             {
                 lines.Add($"{p.Id},{p.Amount},{p.State}");
             }
             File.WriteAllLines(fileName.FullFilePath(), lines);
-        } 
-        public static void SaveToPasswordFile(this List<PasswordModel> models, string fileName) 
+        }
+        public static void SaveToPasswordFile(this List<PasswordModel> models, string fileName)
         {
             List<string> lines = new List<string>();
 
-            foreach (PasswordModel p in models) 
+            foreach (PasswordModel p in models)
             {
                 lines.Add($"{p.Id},{p.Password}");
             }

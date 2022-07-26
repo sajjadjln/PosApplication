@@ -10,11 +10,11 @@ namespace PosePassword
 {
     public class EditCard
     {
-        // i wanted to use showlistcard properties but cant make a same object for both
+
         public List<CardModel> EditCards(int chosenId,List<CardModel> cards)
         {
             List<CardModel> Cards = cards;
-                //inputing new info of the card
+                //inputting new info of the card
             Console.WriteLine($"your current card number is : {Cards[chosenId - 1].CardNumber}\n");
             Console.WriteLine("enter new card number : ");
             string? CardNumb = Console.ReadLine();

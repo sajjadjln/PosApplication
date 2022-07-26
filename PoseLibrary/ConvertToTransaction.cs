@@ -8,7 +8,7 @@ namespace PoseLibrary
 {
     public class ConvertToTransaction : Models.TransactionModel
     {
-        public ConvertToTransaction(decimal amount,string state) 
+        public ConvertToTransaction(decimal amount,string state)
         {
             Amount = amount;
             State = state;

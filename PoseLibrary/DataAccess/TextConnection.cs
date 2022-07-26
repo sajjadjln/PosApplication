@@ -13,7 +13,7 @@ namespace PoseLibrary.DataAccess
         public const string CardFile = "CardModel.csv";
         public const string TransactionFile = "Transactions.csv";
         public const string PasswordFile = "Password.csv";
-        public CardModel CreatCard(CardModel model)
+        public CardModel CreateCard(CardModel model)
         {
             //load the text file and convert it to CardModel
             List<CardModel> Cards = CardFile.FullFilePath().LoadFile().ConvertToCardModel();
@@ -53,7 +53,7 @@ namespace PoseLibrary.DataAccess
 
             return model;
         }
-        public PasswordModel CreatPassword(PasswordModel model)
+        public PasswordModel CreatePassword(PasswordModel model)
         {
             //load the text file and convert it to TransactionModel
             List<PasswordModel> Password = PasswordFile.FullFilePath().LoadFile().ConvertToPasswordModel();
@@ -72,6 +72,6 @@ namespace PoseLibrary.DataAccess
 
             return model;
         }
-       
+
     }
 }

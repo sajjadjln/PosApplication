@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace PosePassword
 {
-    public class TransactionProccess
+    public class TransactionProcess
     {
         public int FlagSaveInfo { get; set; }
-        public TransactionProccess(List<PasswordModel> Password, string? InputPassword,decimal Amount) 
+        public TransactionProcess(List<PasswordModel> Password, string? InputPassword,decimal Amount) 
         {
             int CurrentId = Password.OrderByDescending(x => x.Id).First().Id;
             foreach (var pass in Password)
@@ -38,16 +38,16 @@ namespace PosePassword
                 }
             }
         }
-        public TransactionProccess(ConvertCardType cardModel)
+        public TransactionProcess(ConvertCardType cardModel)
         {
-                Console.WriteLine("do you want to save your card enterd information\n1.Yes\n2.No");
+                Console.WriteLine("do you want to save your card entered information\n1.Yes\n2.No");
                 int InputResult = Convert.ToInt32(Console.ReadLine());
                 if (InputResult == 1)
                 {
-                    TextConnection CardtextFile = new TextConnection();
-                    CardtextFile.CreatCard(cardModel);
+                    TextConnection CardTextFile = new TextConnection();
+                    CardTextFile.CreateCard(cardModel);
                 }
-            
+
         }
     }
 }
