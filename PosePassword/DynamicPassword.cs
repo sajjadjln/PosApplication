@@ -26,7 +26,7 @@ switch (FirstUserInput)
 
        var convertedCardType = CardInput.CardInputInfo();
        TextConnection CardTextFile = new TextConnection();
-        CardTextFile.CreateCard(convertedCardType);
+       CardTextFile.CreateCard(convertedCardType);
         break;
 
     case 2:// show the list of cards
@@ -64,7 +64,7 @@ switch (FirstUserInput)
      String r = generator.Next(0, 1000000).ToString("D6");
      Console.WriteLine($"this is your password : {r}");
      TextConnection PasswordTextFile = new TextConnection();
-     ConvertToPassword password = new ConvertToPassword(r);
+     ConvertToPassword password = new ConvertToPassword(r,DateTime.Now);
      PasswordTextFile.CreatePassword(password);
 
 }

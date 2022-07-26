@@ -28,13 +28,13 @@ try
 switch (FirstUserInput)
 {
     case 1://use a save card
-        
-        var Cardshow = new ShowListCard();
-        Cardshow.ShowInfo();
+
+        var cardShow = new ShowListCard();
+        cardShow.ShowInfo();
         List<CardModel> Cards = CardFile.FullFilePath().LoadFile().ConvertToCardModel();
         foreach (var Card in Cards)
         {
-            if (Card.Id == Cardshow.CardOption)
+            if (Card.Id == cardShow.CardOption)
             {
                 //validating each of the inputs
                 Validation.ValidationCartNumber(Card.CardNumber);
@@ -65,7 +65,7 @@ switch (FirstUserInput)
         string? InputPassword2 = Console.ReadLine();
         List<PasswordModel> Password2 = PasswordFile.FullFilePath().
                     LoadFile().ConvertToPasswordModel();
-        
+
         TransactionProcess TransactionResult2 = new TransactionProcess(
             Password2, InputPassword2, Amount);
             //check to see if transaction succeed then ask for saving card info

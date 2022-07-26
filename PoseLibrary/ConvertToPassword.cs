@@ -8,9 +8,10 @@ namespace PoseLibrary
 {
     public class ConvertToPassword : Models.PasswordModel
     {
-        public ConvertToPassword(string? password)
+        public ConvertToPassword(string? password,DateTime dateTime)
         {
             Password = password;
+            DateTime = dateTime;
         }
     }
 }

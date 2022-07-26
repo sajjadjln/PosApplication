@@ -12,14 +12,15 @@ namespace PosePassword
     public class TransactionProcess
     {
         public int FlagSaveInfo { get; set; }
-        public TransactionProcess(List<PasswordModel> Password, string? InputPassword,decimal Amount) 
+        public TransactionProcess(List<PasswordModel> Password, string? InputPassword,decimal Amount)
         {
             int CurrentId = Password.OrderByDescending(x => x.Id).First().Id;
             foreach (var pass in Password)
             {
                 if (pass.Id == CurrentId)
                 {
-                    if (pass.Password == InputPassword)
+                    int res = DateTime.Compare(pass.DateTime.AddMinutes(5), DateTime.Now);
+                    if (pass.Password == InputPassword && res > 0)
                     {
                         Console.WriteLine("transaction succeed");
                         ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "succeed");
@@ -29,7 +30,7 @@ namespace PosePassword
                     }
                     else
                     {
-                        Console.WriteLine("transaction failed");
+                        Console.WriteLine("transaction failed (your password is wrong or expired)");
                         ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "failed");
                         TextConnection TransactionTextFile = new TextConnection();
                         TransactionTextFile.Transaction(ToTransaction);

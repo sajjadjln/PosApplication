@@ -83,7 +83,7 @@ namespace PoseLibrary.DataAccess.TextHelpers
 
                 Password.Id = int.Parse(cols[0]);
                 Password.Password = cols[1];
-
+                Password.DateTime = DateTime.Parse(cols[2]);
 
                 output.Add(Password);
             }
@@ -120,7 +120,7 @@ namespace PoseLibrary.DataAccess.TextHelpers
 
             foreach (PasswordModel p in models)
             {
-                lines.Add($"{p.Id},{p.Password}");
+                lines.Add($"{p.Id},{p.Password},{p.DateTime}");
             }
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
