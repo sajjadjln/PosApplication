@@ -23,7 +23,7 @@ try
     Console.Clear();
 }catch (FormatException)
 {
-    Console.Write("wrong number!");
+        throw new FormatException("please enter a number");
 }
 switch (FirstUserInput)
 {
