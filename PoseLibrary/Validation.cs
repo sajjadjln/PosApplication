@@ -41,7 +41,7 @@
         /// </summary>
         public static void ValidationDateMonth(int dateMonth)
         {
-            double DateCount = Math.Floor(Math.Log10(dateMonth) + 1);
+            double DateCount = Math.Floor(Math.Log10(dateMonth) + 1); // getting the count of the number
             if (DateCount < 1 || DateCount > 2 || dateMonth > 12 || dateMonth < 1)
             {
                 throw new ArgumentException("wrong Date");
