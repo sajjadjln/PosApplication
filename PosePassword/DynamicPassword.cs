@@ -15,9 +15,10 @@ try
      FirstUserInput = Convert.ToInt32(Console.ReadLine());
      Console.Clear();
 }
-catch (FormatException)
+catch (FormatException) //? how to escape the default massage from switch case. // throw or console.WriteLine
 {
-    Console.Write("wrong number!");
+    throw new FormatException("please enter a number");
+    //Console.Write("Please enter a number ");
 }
 
 switch (FirstUserInput)
