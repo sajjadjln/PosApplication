@@ -44,6 +44,7 @@ switch (FirstUserInput)
 
                 Console.WriteLine("Enter your password");
                 string? InputPassword = Console.ReadLine();
+                Validation.ValidationPassword(InputPassword);
                 List<PasswordModel> Password = PasswordFile.FullFilePath().
                     LoadFile().ConvertToPasswordModel();
                 TransactionProcess TransactionResult = new TransactionProcess(
@@ -63,6 +64,7 @@ switch (FirstUserInput)
 
         Console.WriteLine("Enter your password");
         string? InputPassword2 = Console.ReadLine();
+        Validation.ValidationPassword(InputPassword2);
         List<PasswordModel> Password2 = PasswordFile.FullFilePath().
                     LoadFile().ConvertToPasswordModel();
 
