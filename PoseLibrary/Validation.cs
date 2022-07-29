@@ -2,9 +2,6 @@
 {
     public class Validation
     {
-        /// <summary>
-        /// this method validates the cart number
-        /// </summary>
         public static void ValidationCartNumber(string? cardNumber)
         {
             if (cardNumber == null)
@@ -24,9 +21,6 @@
                 }
             }
         }
-        /// <summary>
-        /// this method validates Cvv2
-        /// </summary>
         public static void ValidationCvv2(int cvv2)
         {
             double Cvv2Count = Math.Floor(Math.Log10(cvv2) + 1);
@@ -36,9 +30,6 @@
             }
 
         }
-        /// <summary>
-        /// this method validates DateMonth and DateYear
-        /// </summary>
         public static void ValidationDateMonth(int dateMonth)
         {
             double DateCount = Math.Floor(Math.Log10(dateMonth) + 1); // getting the count of the number
@@ -55,14 +46,23 @@
                 throw new ArgumentException("wrong Date");
             }
         }
-
-        public static void ValidationPassword(int password)
+        public static void ValidationPassword(string? password)
         {
-            double PasswordCount = Math.Floor(Math.Log10(password) + 1);
-
-            if (PasswordCount < 6 && PasswordCount > 6)
+            if (password == null)
             {
-                throw new ArgumentException("your password number should be 6 digits");
+                throw new ArgumentNullException(nameof(password));
+            }
+            if (password.Length != 6)
+            {
+                throw new ArgumentException("your password should be 6 digits");
+            }
+            foreach (var i in password)
+            {
+                bool a = Char.IsDigit(i);
+                if (a == false)
+                {
+                    throw new ArgumentException("wrong password!");
+                }
             }
         }
     }
