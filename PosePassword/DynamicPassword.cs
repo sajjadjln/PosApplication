@@ -5,23 +5,10 @@ using PoseLibrary.Models;
 using PosePassword;
 
 const string CardFile = "CardModel.csv";
-Console.WriteLine("Welcome to password application");
-Console.WriteLine("please enter the number of your desire option(1 or 2)\n");
-Console.WriteLine("1.Create a new card\n2.choose a saved card and generate password\n3.edit a card information\n4.remove a card");
-int FirstUserInput = 0;
+ShowMassage Input = new ShowMassage();
+int InputSwitch = Input.DynamicPasswordSwitch();
 
-try
-{
-     FirstUserInput = Convert.ToInt32(Console.ReadLine());
-     Console.Clear();
-}
-catch (FormatException) //? how to escape the default massage from switch case. // throw or console.WriteLine
-{
-    throw new FormatException("please enter a number");
-    //Console.Write("Please enter a number ");
-}
-
-switch (FirstUserInput)
+switch (InputSwitch)
 {
     case 1://create new card
 
@@ -62,7 +49,7 @@ switch (FirstUserInput)
 {
 
      Random generator = new Random();
-     String r = generator.Next(0, 1000000).ToString("D6");
+     String r = generator.Next(100000, 1000000).ToString("D6");
      Console.WriteLine($"this is your password : {r}");
      TextConnection PasswordTextFile = new TextConnection();
      ConvertToPassword password = new ConvertToPassword(r,DateTime.Now);
