@@ -9,7 +9,7 @@ namespace PosePassword
         public int FlagSaveInfo { get; set; }
         public TransactionProcess(List<PasswordModel> Password, string? InputPassword,decimal Amount)
         {
-            int CurrentId = Password.OrderByDescending(x => x.Id).First().Id;
+            int CurrentId = Password.OrderByDescending(x => x.Id).Last().Id;
             foreach (var pass in Password)
             {
                 if (pass.Id == CurrentId)
