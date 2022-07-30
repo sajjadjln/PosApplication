@@ -4,28 +4,15 @@ using PoseLibrary.DataAccess.TextHelpers;
 using PoseLibrary.Models;
 using PosePassword;
 
-int FirstUserInput = 0;
+
 
 const string CardFile = "CardModel.csv";
 const string PasswordFile = "Password.csv";
 
-Console.WriteLine("Welcome to Pose application\n\n");
-Console.WriteLine("please Enter your desired amount");
-var InputString = Console.ReadLine();
-decimal Amount;
-decimal.TryParse(InputString, out Amount);
-Console.Clear();
-Console.WriteLine("1.using a saved card");
-Console.WriteLine("2.entering card information");
-try
-{
-    FirstUserInput = Convert.ToInt32(Console.ReadLine());
-    Console.Clear();
-}catch (FormatException)
-{
-        throw new FormatException("please enter a number");
-}
-switch (FirstUserInput)
+ShowMassage Input = new ShowMassage();
+int InputSwitch = Input.PoseSwitch();
+
+switch (InputSwitch)
 {
     case 1://use a save card
 
@@ -48,7 +35,7 @@ switch (FirstUserInput)
                 List<PasswordModel> Password = PasswordFile.FullFilePath().
                     LoadFile().ConvertToPasswordModel();
                 TransactionProcess TransactionResult = new TransactionProcess(
-                    Password, InputPassword,Amount);
+                    Password, InputPassword,Input.Amount);
             }
         }
             break;
@@ -69,7 +56,7 @@ switch (FirstUserInput)
                     LoadFile().ConvertToPasswordModel();
 
         TransactionProcess TransactionResult2 = new TransactionProcess(
-            Password2, InputPassword2, Amount);
+            Password2, InputPassword2, Input.Amount);
             //check to see if transaction succeed then ask for saving card info
         if (TransactionResult2.FlagSaveInfo == 1)
         {
