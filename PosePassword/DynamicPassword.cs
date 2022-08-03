@@ -18,7 +18,6 @@ switch (InputSwitch)
         break;
 
     case 2:// show the list of cards
-           // how to access field CardFile in TextConnection class
 
         var CardShow = new ShowListCard();
         CardShow.ShowInfo();
