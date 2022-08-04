@@ -4,7 +4,7 @@ this project contains two applications
 1. password generating application
 2. pos application
 
-## PosePassword
+## PosPassword
 at first you should use the password app to generate a random six digit number for yourself and use that in the pos application.
 you can also create new cards in this app. the information of the cards will be stored in a file so you can use the saved cards option in the other application.
 
