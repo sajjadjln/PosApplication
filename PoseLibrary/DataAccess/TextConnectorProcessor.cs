@@ -76,11 +76,17 @@ namespace PoseLibrary.DataAccess.TextHelpers
         public static List<PasswordModel> ConvertToPasswordModel(this List<string> lines)
         {
             List<PasswordModel> output = new List<PasswordModel>();
+            PasswordModel Password = new PasswordModel();
+            if(lines.Count == 0) // in case there was no password file
+            {
+                Password.Id = 0;
+                Password.Password = "";
+                Password.DateTime = DateTime.Now;
+                output.Add(Password);
+            }
             foreach (var line in lines)
             {
                 string[] cols = line.Split(',');
-                PasswordModel Password = new PasswordModel();
-
                 Password.Id = int.Parse(cols[0]);
                 Password.Password = cols[1];
                 Password.DateTime = DateTime.Parse(cols[2]);
