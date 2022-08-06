@@ -17,6 +17,10 @@ namespace PosePassword
         public void ShowInfo()
         {
             List<CardModel> Card = CardFile.FullFilePath().LoadFile().ConvertToCardModel();
+            if(Card.Count == 0)
+            {
+                throw new Exception("there is no saved card");
+            }
             Cards = Card;
             int CardOption = 0;
             for (int i = 0; i < Cards.Count; i++)
