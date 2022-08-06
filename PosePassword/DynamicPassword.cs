@@ -17,7 +17,7 @@ switch (InputSwitch)
        CardTextFile.CreateCard(convertedCardType);
         break;
 
-    case 2:// show the list of cards
+    case 2:// show the list of cards and generate password
 
         var CardShow = new ShowListCard();
         CardShow.ShowInfo();
@@ -32,7 +32,7 @@ switch (InputSwitch)
         Cards.SaveToCardFile(CardFile);
 
         break;
-    case 4:
+    case 4: // removing a card
         var CardShow3 = new ShowListCard();
         CardShow3.ShowInfo();
         var removeCard = new RemoveCard();
