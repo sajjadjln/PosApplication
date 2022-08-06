@@ -9,31 +9,24 @@ namespace PosePassword
         public int FlagSaveInfo { get; set; }
         public TransactionProcess(List<PasswordModel> Password, string? InputPassword,decimal Amount)
         {
-            int CurrentId = Password.OrderByDescending(x => x.Id).Last().Id;
-            foreach (var pass in Password)
-            {
-                if (pass.Id == CurrentId)
+            var CurrentPassword = Password.OrderByDescending(x => x.Id).Last();
+            int res = DateTime.Compare(CurrentPassword.DateTime.AddMinutes(5), DateTime.Now);
+            if (CurrentPassword.Password == InputPassword && res > 0)
                 {
-                    int res = DateTime.Compare(pass.DateTime.AddMinutes(5), DateTime.Now);
-                    if (pass.Password == InputPassword && res > 0)
-                    {
-                        Console.WriteLine("transaction succeed");
-                        ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "succeed");
-                        TextConnection TransactionTextFile = new TextConnection();
-                        TransactionTextFile.Transaction(ToTransaction);
-                        FlagSaveInfo = 1;
-                    }
-                    else
-                    {
-                        Console.WriteLine("transaction failed (your password is wrong or expired)");
-                        ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "failed");
-                        TextConnection TransactionTextFile = new TextConnection();
-                        TransactionTextFile.Transaction(ToTransaction);
-                    }
-
+                    Console.WriteLine("transaction succeed");
+                    ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "succeed");
+                    TextConnection TransactionTextFile = new TextConnection();
+                    TransactionTextFile.Transaction(ToTransaction);
+                    FlagSaveInfo = 1;
+                }
+                else
+                {
+                    Console.WriteLine("transaction failed (your password is wrong or expired)");
+                    ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "failed");
+                    TextConnection TransactionTextFile = new TextConnection();
+                    TransactionTextFile.Transaction(ToTransaction);
                 }
             }
-        }
         public TransactionProcess(ConvertCardType cardModel)
         {
                 Console.WriteLine("do you want to save your card entered information\n1.Yes\n2.No");
