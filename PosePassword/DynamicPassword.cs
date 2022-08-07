@@ -27,17 +27,24 @@ switch (InputSwitch)
     case 3: // edit the card info
         var CardShow2 = new ShowListCard();
         CardShow2.ShowInfo();
-        var EditCard = new EditCard();
-        var Cards = EditCard.EditCards(CardShow2.CardOption,CardShow2.Cards);
-        Cards.SaveToCardFile(CardFile);
+        if(CardShow2.SaveCardFlag == 1)
+        {
+            var EditCard = new EditCard();
+            var Cards = EditCard.EditCards(CardShow2.CardOption,CardShow2.Cards);
+            Cards.SaveToCardFile(CardFile);
+        }
+
 
         break;
     case 4: // removing a card
         var CardShow3 = new ShowListCard();
         CardShow3.ShowInfo();
-        var removeCard = new RemoveCard();
-        var removedCards = removeCard.RemoveCards(CardShow3.CardOption,CardShow3.Cards);
-        removedCards.SaveToCardFile(CardFile);
+        if(CardShow3.SaveCardFlag == 1)
+        {
+            var removeCard = new RemoveCard();
+            var removedCards = removeCard.RemoveCards(CardShow3.CardOption,CardShow3.Cards);
+            removedCards.SaveToCardFile(CardFile);
+        }
         break;
     default:
         Console.WriteLine("Your number is out of reach");
