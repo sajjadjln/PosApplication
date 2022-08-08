@@ -11,14 +11,8 @@ namespace PosePassword
     {
         public static ConvertCardType CardInputInfo()
         {
-            string CardNumberInputTrimmed = "";
             Console.WriteLine("please Enter your card number: ");
             string? CardNumberInput = Console.ReadLine();
-            if(CardNumberInput!=null) // to remove null warning for CardNumberInput
-            {
-            CardNumberInputTrimmed = String.Concat(
-            CardNumberInput.Where(c => !Char.IsWhiteSpace(c)));
-            }
             Console.WriteLine("please Enter your Cvv2 number: ");
             string? Cvv2Input = Console.ReadLine();
             Console.WriteLine("please Enter your card expire month date: ");
@@ -28,7 +22,7 @@ namespace PosePassword
 
             //converting all the input string types to CardModel types
             ConvertCardType convertedCardType = new ConvertCardType(
-                CardNumberInputTrimmed,
+                CardNumberInput,
                 Cvv2Input,
                 DateMonthInput,
                 DateYearInput);
