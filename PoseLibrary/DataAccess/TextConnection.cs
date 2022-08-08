@@ -55,7 +55,7 @@ namespace PoseLibrary.DataAccess
         }
         public PasswordModel CreatePassword(PasswordModel model)
         {
-            //load the text file and convert it to TransactionModel
+            //load the text file and convert it to PasswordModel
             List<PasswordModel> Password = PasswordFile.FullFilePath().LoadFile().ConvertToPasswordModel();
             // find the max id
             int CurrentId = 1;
