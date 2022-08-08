@@ -9,6 +9,11 @@ namespace PosePassword
         public int FlagSaveInfo { get; set; }
         public TransactionProcess(List<PasswordModel> Password, string? InputPassword,decimal Amount)
         {
+            if(Password.Count == 0)
+            {
+                Console.WriteLine("please use the password generator first");
+            }
+            else{
             var CurrentPassword = Password.OrderByDescending(x => x.Id).Last();
             int res = DateTime.Compare(CurrentPassword.DateTime.AddMinutes(5), DateTime.Now);
             if (CurrentPassword.Password == InputPassword && res > 0)
@@ -25,6 +30,7 @@ namespace PosePassword
                     ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "failed");
                     TextConnection TransactionTextFile = new TextConnection();
                     TransactionTextFile.Transaction(ToTransaction);
+                }
                 }
             }
         public TransactionProcess(ConvertCardType cardModel)
