@@ -5,7 +5,6 @@ using PoseLibrary.Models;
 using PosePassword;
 
 
-
 const string CardFile = "CardModel.csv";
 const string PasswordFile = "Password.csv";
 
@@ -15,7 +14,7 @@ int InputSwitch = Input.PoseSwitch();
 switch (InputSwitch)
 {
     case 1://use a save card
-
+        var Money1 = new AmountInput();
         var cardShow = new ShowListCard();
         cardShow.ShowInfo();
         List<CardModel> Cards = CardFile.FullFilePath().LoadFile().ConvertToCardModel();
@@ -35,13 +34,15 @@ switch (InputSwitch)
                 List<PasswordModel> Password = PasswordFile.FullFilePath().
                     LoadFile().ConvertToPasswordModel();
                 TransactionProcess TransactionResult = new TransactionProcess(
-                    Password, InputPassword,Input.Amount);
+                    Password, InputPassword,Money1.Amount);
             }
         }
+        Console.Read();
             break;
     case 2:// entering info
 
         Console.Clear();
+        var Money2 = new AmountInput();
         var convertedCardType = CardInput.CardInputInfo();
         //validating each of the inputs
         Validation.ValidationCartNumber(convertedCardType.CardNumber);
@@ -56,14 +57,20 @@ switch (InputSwitch)
                     LoadFile().ConvertToPasswordModel();
 
         TransactionProcess TransactionResult2 = new TransactionProcess(
-            Password2, InputPassword2, Input.Amount);
+            Password2, InputPassword2, Money2.Amount);
             //check to see if transaction succeed then ask for saving card info
         if (TransactionResult2.FlagSaveInfo == 1)
         {
             TransactionProcess SaveInformation = new TransactionProcess(convertedCardType);
         }
+        Console.Read();
+        break;
+    case 3:
+        var ListTransaction = new TransactionShow();
+        Console.Read();
         break;
     default:
         Console.WriteLine("Your number is out of reach");
+        Console.Read();
         break;
 }
