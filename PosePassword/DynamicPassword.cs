@@ -15,6 +15,7 @@ switch (InputSwitch)
        var convertedCardType = CardInput.CardInputInfo();
        TextConnection CardTextFile = new TextConnection();
        CardTextFile.CreateCard(convertedCardType);
+       Console.Read();
         break;
 
     case 2:// show the list of cards and generate password
@@ -22,6 +23,7 @@ switch (InputSwitch)
         var CardShow = new ShowListCard();
         CardShow.ShowInfo();
         password();
+        Console.Read();
         break;
 
     case 3: // edit the card info
@@ -33,7 +35,7 @@ switch (InputSwitch)
             var Cards = EditCard.EditCards(CardShow2.CardOption,CardShow2.Cards);
             Cards.SaveToCardFile(CardFile);
         }
-
+        Console.Read();
 
         break;
     case 4: // removing a card
@@ -45,9 +47,11 @@ switch (InputSwitch)
             var removedCards = removeCard.RemoveCards(CardShow3.CardOption,CardShow3.Cards);
             removedCards.SaveToCardFile(CardFile);
         }
+        Console.Read();
         break;
     default:
         Console.WriteLine("Your number is out of reach");
+        Console.Read();
         break;
 }
 
