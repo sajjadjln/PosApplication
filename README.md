@@ -4,11 +4,11 @@ this project contains two applications
 1. password generating application
 2. pos application
 ## PosPassword
-this application has four options
-1.Creating a new card
-2.Displaying a list of saved cards and generating
-3.Editing card information
-4.Removing a card from the file
+this application has four options.
+-Creating a new card
+-Displaying a list of saved cards and generating
+-Editing card information
+-Removing a card from the file
 ### Displaying a list of saved cards and generating
 converting all the save cards in the file to a list and displaying it to the console.
 also Generates a 6-digit password that expires within 5 minutes of generation and saves that password to a file.
