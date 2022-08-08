@@ -12,6 +12,7 @@ namespace PosePassword
 
     public class ShowListCard : TextConnection
     {
+        public int SaveCardFlag { get; set; } = 1;
         public int CardOption { get; set; }
         public List<CardModel> Cards { get; set; } = new List<CardModel>();
         public void ShowInfo()
@@ -19,8 +20,11 @@ namespace PosePassword
             List<CardModel> Card = CardFile.FullFilePath().LoadFile().ConvertToCardModel();
             if(Card.Count == 0)
             {
-                throw new Exception("there is no saved card");
+                Console.WriteLine("there is no saved card");
+                SaveCardFlag = 0;
             }
+            else
+            {
             Cards = Card;
             int CardOption = 0;
             for (int i = 0; i < Cards.Count; i++)
@@ -41,6 +45,7 @@ namespace PosePassword
             catch (FormatException)
             {
                 Console.Write("Input string is not a digit.");
+            }
             }
         }
     }
