@@ -3,7 +3,7 @@ namespace PosePassword
 
     public class ShowMassage
     {
-        public Decimal Amount { get; set; }
+        //public Decimal Amount { get; set; }
         public int DynamicPasswordSwitch()
         {
             Console.WriteLine("Welcome to password application");
@@ -19,7 +19,6 @@ namespace PosePassword
             catch (FormatException) //? how to escape the default massage from switch case. // throw or console.WriteLine
             {
             throw new FormatException("please enter a number");
-            //Console.Write("Please enter a number ");
             }
             return FirstUserInput;
         }
@@ -27,14 +26,10 @@ namespace PosePassword
         {
             int FirstUserInput = 0;
             Console.WriteLine("Welcome to Pose application\n\n");
-            Console.WriteLine("please Enter your desired amount");
-            var InputString = Console.ReadLine();
-            decimal Amount;
-            decimal.TryParse(InputString, out Amount);
-            this.Amount = Amount;
             Console.Clear();
-            Console.WriteLine("1.using a saved card");
-            Console.WriteLine("2.entering card information");
+            Console.WriteLine("1.purchasing by using a saved card");
+            Console.WriteLine("2.purchasing by entering card information");
+            Console.WriteLine("3.Display recent transactions");
             try
             {
                 FirstUserInput = Convert.ToInt32(Console.ReadLine());
