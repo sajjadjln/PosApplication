@@ -16,7 +16,7 @@ switch (InputSwitch)
        TextConnection CardTextFile = new TextConnection();
        CardTextFile.CreateCard(convertedCardType);
        Console.Read();
-        break;
+       break;
 
     case 2:// show the list of cards and generate password
 
