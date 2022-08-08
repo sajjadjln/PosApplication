@@ -6,7 +6,7 @@ this project contains two applications
 ## PosPassword
 this application has four options.
 - Creating a new card
-- Displaying a list of saved cards and generating
+- Displaying a list of saved cards and generating a password
 - Editing card information
 - Removing a card from the file
 ### Displaying a list of saved cards and generating
