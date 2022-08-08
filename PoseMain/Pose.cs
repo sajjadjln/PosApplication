@@ -54,6 +54,7 @@ switch (InputSwitch)
         Console.Read();
         break;
     case 3:
+        //show the recent transactions
         var ListTransaction = new TransactionShow();
         Console.Read();
         break;
