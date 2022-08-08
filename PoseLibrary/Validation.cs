@@ -4,15 +4,18 @@
     {
         public static void ValidationCartNumber(string? cardNumber)
         {
-            if (cardNumber == null)
+            string CardNumberInputTrimmed = "";
+            if(cardNumber!=null) // to remove null warning for CardNumberInput
             {
-                throw new ArgumentNullException(nameof(cardNumber));
+                CardNumberInputTrimmed = String.Concat(
+                cardNumber.Where(c => !Char.IsWhiteSpace(c)));
+                CardNumberInputTrimmed = CardNumberInputTrimmed.TrimStart('0');
             }
-            if (cardNumber.Length != 16)
+            if (CardNumberInputTrimmed.Length != 16)
             {
                 throw new ArgumentException("your cart number should be 16 digits");
             }
-            foreach (var i in cardNumber)
+            foreach (var i in CardNumberInputTrimmed)
             {
                 bool a = Char.IsDigit(i);
                 if (a == false)
