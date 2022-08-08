@@ -16,7 +16,7 @@ namespace PosePassword
              FirstUserInput = Convert.ToInt32(Console.ReadLine());
              Console.Clear();
             }
-            catch (FormatException) //? how to escape the default massage from switch case. // throw or console.WriteLine
+            catch (FormatException)
             {
             throw new FormatException("please enter a number");
             }
