@@ -4,7 +4,7 @@ this project contains two applications
 1. password generating application
 2. pos application
 ## PosPassword
-this application has four options.
+this application has four options
 1.Creating a new card
 2.Displaying a list of saved cards and generating
 3.Editing card information
