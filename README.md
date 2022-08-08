@@ -3,16 +3,22 @@
 this project contains two applications
 1. password generating application
 2. pos application
-
 ## PosPassword
-at first you should use the password app to generate a random six digit number for yourself and use it in the pos application.
-you can also create new cards in this app. the information of the cards will be stored in a file so you can use the saved cards option in the other application.
-
-you can choose which saved card you want to generate password for. this option is still on development so it does not really care for which card you choose and generates a general password that you can use for all the cards.the passwords will also be stored in a file.(you just have 5 minutes to use the password or it will get expired)
-the main class is DynamicPassword.
+this application has four options.
+1.Creating a new card
+2.Displaying a list of saved cards and generating
+3.Editing card information
+4.Removing a card from the file
+### Displaying a list of saved cards and generating
+converting all the save cards in the file to a list and displaying it to the console.
+also Generates a 6-digit password that expires within 5 minutes of generation and saves that password to a file.
 ## PosMain
-now you can open the pos application.
-you will enter your desire amount of money and then choose to use a saved card or enter new information.
-in this process your card information will be checked.
-if everything goes fine, your transaction will be succeed and it will be saved in a file and in the end app gonna ask you if you want to save card information or not.
-if you hit 1 then card info will be saved in the same card file.
+this application has three options.
+1.purchasing by using a saved card
+2.purchasing by entering card information
+3.Display recent transactions
+
+### purchasing by using a saved card
+use the card file to display all the card so you can choose which card you want to use.
+### purchasing by entering card information
+if the transaction succeed it will ask if you want to save the card to your card file.
