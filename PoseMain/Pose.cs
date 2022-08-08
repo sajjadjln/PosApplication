@@ -22,12 +22,6 @@ switch (InputSwitch)
         {
             if (Card.Id == cardShow.CardOption)
             {
-                //validating each of the inputs
-                Validation.ValidationCartNumber(Card.CardNumber);
-                Validation.ValidationCvv2(Card.Cvv2);
-                Validation.ValidationDateMonth(Card.DateMonth);
-                Validation.ValidationDateYear(Card.DateYear);
-
                 Console.WriteLine("Enter your password");
                 string? InputPassword = Console.ReadLine();
                 Validation.ValidationPassword(InputPassword);
@@ -44,12 +38,6 @@ switch (InputSwitch)
         Console.Clear();
         var Money2 = new AmountInput();
         var convertedCardType = CardInput.CardInputInfo();
-        //validating each of the inputs
-        Validation.ValidationCartNumber(convertedCardType.CardNumber);
-        Validation.ValidationCvv2(convertedCardType.Cvv2);
-        Validation.ValidationDateMonth(convertedCardType.DateMonth);
-        Validation.ValidationDateYear(convertedCardType.DateYear);
-
         Console.WriteLine("Enter your password");
         string? InputPassword2 = Console.ReadLine();
         Validation.ValidationPassword(InputPassword2);
