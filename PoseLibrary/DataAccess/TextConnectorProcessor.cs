@@ -23,17 +23,20 @@ namespace PoseLibrary.DataAccess.TextHelpers
             return $"{ConfigurationManager.AppSettings["filePath"]}\\{fileName}";*/
             return $"F:\\c#_projects\\POS_project\\Data\\{fileName}";
         }
+
         /// <summary>
         /// checks if the files exist and load the file
         /// </summary>
         public static List<string> LoadFile(this string fileName)
         {
             if (!File.Exists(fileName))
-              {
+            {
                 return new List<string>();
-              }
+            }
+
             return File.ReadLines(fileName).ToList();
         }
+
         /// <summary>
         /// takes a list of string containing our file information
         /// convert every line to a model of card
@@ -54,8 +57,10 @@ namespace PoseLibrary.DataAccess.TextHelpers
 
                 output.Add(card);
             }
+
             return output;
         }
+
         public static List<TransactionModel> ConvertToTransactionModel(this List<string> lines)
         {
             List<TransactionModel> output = new List<TransactionModel>();
@@ -71,8 +76,10 @@ namespace PoseLibrary.DataAccess.TextHelpers
 
                 output.Add(Transaction);
             }
+
             return output;
         }
+
         public static List<PasswordModel> ConvertToPasswordModel(this List<string> lines)
         {
             List<PasswordModel> output = new List<PasswordModel>();
@@ -86,8 +93,10 @@ namespace PoseLibrary.DataAccess.TextHelpers
 
                 output.Add(Password);
             }
+
             return output;
         }
+
         /// <summary>
         /// we take our models and convert them to a list of strings
         /// and we take filename and convert it to the full path
@@ -101,8 +110,10 @@ namespace PoseLibrary.DataAccess.TextHelpers
             {
                 lines.Add($"{p.Id},{p.CardNumber},{p.DateMonth},{p.DateYear},{p.Cvv2}");
             }
+
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
+
         public static void SaveToTransactionFile(this List<TransactionModel> models, string fileName)
         {
             List<string> lines = new List<string>();
@@ -111,8 +122,10 @@ namespace PoseLibrary.DataAccess.TextHelpers
             {
                 lines.Add($"{p.Id},{p.Amount},{p.State}");
             }
+
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
+
         public static void SaveToPasswordFile(this List<PasswordModel> models, string fileName)
         {
             List<string> lines = new List<string>();
@@ -121,6 +134,7 @@ namespace PoseLibrary.DataAccess.TextHelpers
             {
                 lines.Add($"{p.Id},{p.Password},{p.DateTime}");
             }
+
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
     }

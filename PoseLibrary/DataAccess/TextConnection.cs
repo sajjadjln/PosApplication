@@ -1,10 +1,5 @@
-﻿using PoseLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PoseLibrary.DataAccess.TextHelpers;
+﻿using PoseLibrary.DataAccess.TextHelpers;
+using PoseLibrary.Models;
 
 namespace PoseLibrary.DataAccess
 {
@@ -13,6 +8,7 @@ namespace PoseLibrary.DataAccess
         public const string CardFile = "CardModel.csv";
         public const string TransactionFile = "Transactions.csv";
         public const string PasswordFile = "Password.csv";
+
         public CardModel CreateCard(CardModel model)
         {
             //load the text file and convert it to CardModel
@@ -25,6 +21,7 @@ namespace PoseLibrary.DataAccess
             {
                 CurrentId = Cards.OrderByDescending(x => x.Id).First().Id + 1;
             }
+
             model.Id = CurrentId;
 
             // add the new record with new id
@@ -34,6 +31,7 @@ namespace PoseLibrary.DataAccess
 
             return model;
         }
+
         public TransactionModel Transaction(TransactionModel model)
         {
             //load the text file and convert it to TransactionModel
@@ -44,6 +42,7 @@ namespace PoseLibrary.DataAccess
             {
                 CurrentId = Transactions.OrderByDescending(x => x.Id).First().Id + 1;
             }
+
             model.Id = CurrentId;
 
             // add the new record with new id
@@ -53,6 +52,7 @@ namespace PoseLibrary.DataAccess
 
             return model;
         }
+
         public PasswordModel CreatePassword(PasswordModel model)
         {
             //load the text file and convert it to PasswordModel
@@ -63,6 +63,7 @@ namespace PoseLibrary.DataAccess
             {
                 CurrentId = Password.OrderByDescending(x => x.Id).First().Id + 1;
             }
+
             model.Id = CurrentId;
 
             // add the new record with new id
@@ -72,6 +73,5 @@ namespace PoseLibrary.DataAccess
 
             return model;
         }
-
     }
 }

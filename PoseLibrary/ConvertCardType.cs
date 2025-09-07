@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PoseLibrary.Models;
 
 namespace PoseLibrary
 {
-    public class ConvertCardType : Models.CardModel
+    public class ConvertCardType : CardModel
     {
         /// <summary>
         ///  this Constructor takes input strings and convert them to their correct type
