@@ -1,6 +1,5 @@
 namespace PosePassword
 {
-
     public class ShowMassage
     {
         //public Decimal Amount { get; set; }
@@ -8,20 +7,23 @@ namespace PosePassword
         {
             Console.WriteLine("Welcome to password application");
             Console.WriteLine("please enter the number of your desire option(1 or 2)\n");
-            Console.WriteLine("1.Create a new card\n2.choose a saved card and generate password\n3.edit a card information\n4.remove a card");
+            Console.WriteLine(
+                "1.Create a new card\n2.choose a saved card and generate password\n3.edit a card information\n4.remove a card");
             int FirstUserInput = 0;
 
             try
             {
-             FirstUserInput = Convert.ToInt32(Console.ReadLine());
-             Console.Clear();
+                FirstUserInput = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
             }
             catch (FormatException)
             {
-            throw new FormatException("please enter a number");
+                throw new FormatException("please enter a number");
             }
+
             return FirstUserInput;
         }
+
         public int PoseSwitch()
         {
             int FirstUserInput = 0;
@@ -34,12 +36,13 @@ namespace PosePassword
             {
                 FirstUserInput = Convert.ToInt32(Console.ReadLine());
                 Console.Clear();
-            }catch (FormatException)
-            {
-                    throw new FormatException("please enter a number");
             }
+            catch (FormatException)
+            {
+                throw new FormatException("please enter a number");
+            }
+
             return FirstUserInput;
         }
     }
-
 }

@@ -1,18 +1,20 @@
 using PoseLibrary.DataAccess;
-using PoseLibrary.DataAccess.TextHelpers;
-using PoseLibrary.Models;
+using PoseLibrary.DataAccess.CsvHandling;
+
 namespace PosePassword
 {
     public class TransactionShow : TextConnection
     {
         public TransactionShow()
         {
-            List<TransactionModel> ListTransactions = TransactionFile.FullFilePath().LoadFile().ConvertToTransactionModel();
-            if(ListTransactions.Count == 0)
+            var transactionModel = TransactionFile.FullFilePath().LoadFile()
+                .ConvertFileToModel(new TransactionCsvConvertor());
+            if (transactionModel.Count == 0)
             {
                 Console.WriteLine("there is no transaction");
             }
-            foreach(var line in ListTransactions)
+
+            foreach (var line in transactionModel)
             {
                 Console.WriteLine($"ID: {line.Id}   Amount: {line.Amount}  Status: {line.State}");
             }
