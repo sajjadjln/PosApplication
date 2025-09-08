@@ -1,6 +1,3 @@
-using PoseLibrary.DataAccess;
-using PoseLibrary.DataAccess.TextHelpers;
-using PoseLibrary.Models;
 namespace PosePassword
 {
     public class AmountInput

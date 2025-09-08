@@ -6,6 +6,7 @@ namespace PoseLibrary
     {
         /// <summary>
         ///  this Constructor takes input strings and convert them to their correct type
+        ///! builder design pattern instead of using constructor and optional parameters
         /// </summary>
         public ConvertCardType(string? cardNumber, string? cvv2, string? dateMonth, string? dateYear)
         {

@@ -1,4 +1,4 @@
-﻿using PoseLibrary.DataAccess.TextHelpers;
+﻿using PoseLibrary.DataAccess.CsvHandling;
 using PoseLibrary.Models;
 
 namespace PoseLibrary.DataAccess
@@ -12,43 +12,42 @@ namespace PoseLibrary.DataAccess
         public CardModel CreateCard(CardModel model)
         {
             //load the text file and convert it to CardModel
-            List<CardModel> Cards = CardFile.FullFilePath().LoadFile().ConvertToCardModel();
+            var cardModel = CardFile.FullFilePath().LoadFile().ConvertFileToModel(new CardCsvConvertor());
 
             // find the max id
             int CurrentId = 1;
 
-            if (Cards.Count > 0)
+            if (cardModel.Count > 0)
             {
-                CurrentId = Cards.OrderByDescending(x => x.Id).First().Id + 1;
+                CurrentId = cardModel.OrderByDescending(x => x.Id).First().Id + 1;
             }
 
             model.Id = CurrentId;
 
             // add the new record with new id
-            Cards.Add(model);
-
-            Cards.SaveToCardFile(CardFile);
-
+            cardModel.Add(model);
+            cardModel.SaveToFile(new CardCsvConvertor(), CardFile);
             return model;
         }
 
         public TransactionModel Transaction(TransactionModel model)
         {
             //load the text file and convert it to TransactionModel
-            List<TransactionModel> Transactions = TransactionFile.FullFilePath().LoadFile().ConvertToTransactionModel();
+            var transactionModel = TransactionFile.FullFilePath().LoadFile()
+                .ConvertFileToModel(new TransactionCsvConvertor());
             // find the max id
             int CurrentId = 1;
-            if (Transactions.Count > 0)
+            if (transactionModel.Count > 0)
             {
-                CurrentId = Transactions.OrderByDescending(x => x.Id).First().Id + 1;
+                CurrentId = transactionModel.OrderByDescending(x => x.Id).First().Id + 1;
             }
 
             model.Id = CurrentId;
 
             // add the new record with new id
-            Transactions.Add(model);
+            transactionModel.Add(model);
 
-            Transactions.SaveToTransactionFile(TransactionFile);
+            transactionModel.SaveToFile(new TransactionCsvConvertor(), TransactionFile);
 
             return model;
         }
@@ -56,20 +55,20 @@ namespace PoseLibrary.DataAccess
         public PasswordModel CreatePassword(PasswordModel model)
         {
             //load the text file and convert it to PasswordModel
-            List<PasswordModel> Password = PasswordFile.FullFilePath().LoadFile().ConvertToPasswordModel();
+            var password = PasswordFile.FullFilePath().LoadFile().ConvertFileToModel(new PasswordCsvConvertor());
             // find the max id
             int CurrentId = 1;
-            if (Password.Count > 0)
+            if (password.Count > 0)
             {
-                CurrentId = Password.OrderByDescending(x => x.Id).First().Id + 1;
+                CurrentId = password.OrderByDescending(x => x.Id).First().Id + 1;
             }
 
             model.Id = CurrentId;
 
             // add the new record with new id
-            Password.Add(model);
+            password.Add(model);
 
-            Password.SaveToPasswordFile(PasswordFile);
+            password.SaveToFile(new PasswordCsvConvertor(), PasswordFile);
 
             return model;
         }
