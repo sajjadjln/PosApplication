@@ -4,14 +4,16 @@ namespace PoseLibrary.DataAccess.CsvHandling;
 
 public class CardCsvConvertor : ICsvConvertor<CardModel>
 {
+    public string CsvModelToString(CardModel model)
+    {
+        return $"{model.Id},{model.CardNumber},{model.DateMonth},{model.DateYear},{model.Cvv2}";
+    }
+
     public List<string> CsvModelToString(List<CardModel> cardModels)
     {
-        var lines = new List<string>();
-        foreach (var model in cardModels) // can later turn to LINQ expression
-        {
-            lines.Add($"{model.Id},{model.CardNumber},{model.DateMonth},{model.DateYear},{model.Cvv2}");
-        }
-        return lines;
+        return cardModels
+            .Select(model => $"{model.Id},{model.CardNumber},{model.DateMonth},{model.DateYear},{model.Cvv2}")
+            .ToList();
     }
 
     public List<CardModel> StringToCsvModel(List<string> csvModel)

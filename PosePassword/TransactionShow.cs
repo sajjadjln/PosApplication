@@ -1,13 +1,14 @@
+using PoseLibrary;
 using PoseLibrary.DataAccess;
 using PoseLibrary.DataAccess.CsvHandling;
 
 namespace PosePassword
 {
-    public class TransactionShow : TextConnection
+    public class TransactionShow
     {
         public TransactionShow()
         {
-            var transactionModel = TransactionFile.FullFilePath().LoadFile()
+            var transactionModel = GlobalSettings.TransactionFile.FullFilePath().LoadFile()
                 .ConvertFileToModel(new TransactionCsvConvertor());
             if (transactionModel.Count == 0)
             {
