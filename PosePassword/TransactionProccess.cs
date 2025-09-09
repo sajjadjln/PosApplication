@@ -1,5 +1,5 @@
 ﻿using PoseLibrary;
-using PoseLibrary.DataAccess;
+using PoseLibrary.DataAccess.CsvHandling.AddModelToCsv;
 using PoseLibrary.Models;
 
 namespace PosePassword
@@ -22,16 +22,16 @@ namespace PosePassword
                 {
                     Console.WriteLine("transaction succeed");
                     ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "succeed");
-                    TextConnection TransactionTextFile = new TextConnection();
-                    TransactionTextFile.Transaction(ToTransaction);
+                    AddNewTransactionToCsv TransactionTextFile = new AddNewTransactionToCsv();
+                    TransactionTextFile.AddModel(ToTransaction);
                     FlagSaveInfo = 1;
                 }
                 else
                 {
                     Console.WriteLine("transaction failed (your password is wrong or expired)");
                     ConvertToTransaction ToTransaction = new ConvertToTransaction(Amount, "failed");
-                    TextConnection TransactionTextFile = new TextConnection();
-                    TransactionTextFile.Transaction(ToTransaction);
+                    AddNewTransactionToCsv TransactionTextFile = new AddNewTransactionToCsv();
+                    TransactionTextFile.AddModel(ToTransaction);
                 }
             }
         }
@@ -42,8 +42,8 @@ namespace PosePassword
             int InputResult = Convert.ToInt32(Console.ReadLine());
             if (InputResult == 1)
             {
-                TextConnection CardTextFile = new TextConnection();
-                CardTextFile.CreateCard(cardModel);
+                AddNewCardModelToCsv CardTextFile = new AddNewCardModelToCsv();
+                CardTextFile.AddModel(cardModel);
             }
         }
     }

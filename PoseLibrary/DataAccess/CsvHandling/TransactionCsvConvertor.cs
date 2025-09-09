@@ -4,6 +4,11 @@ namespace PoseLibrary.DataAccess.CsvHandling;
 
 public class TransactionCsvConvertor : ICsvConvertor<TransactionModel>
 {
+    public string CsvModelToString(TransactionModel model)
+    {
+        return $"{model.Id},{model.Amount},{model.State}";
+    }
+
     public List<string> CsvModelToString(List<TransactionModel> model)
     {
         var lines = new List<string>();

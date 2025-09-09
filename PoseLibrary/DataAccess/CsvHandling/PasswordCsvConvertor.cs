@@ -4,6 +4,11 @@ namespace PoseLibrary.DataAccess.CsvHandling;
 
 public class PasswordCsvConvertor : ICsvConvertor<PasswordModel>
 {
+    public string CsvModelToString(PasswordModel model)
+    {
+        return $"{model.Id},{model.Password},{model.DateTime}";
+    }
+
     public List<string> CsvModelToString(List<PasswordModel> model)
     {
         var lines = new List<string>();

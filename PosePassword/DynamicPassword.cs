@@ -1,6 +1,7 @@
 ﻿using PoseLibrary;
 using PoseLibrary.DataAccess;
 using PoseLibrary.DataAccess.CsvHandling;
+using PoseLibrary.DataAccess.CsvHandling.AddModelToCsv;
 using PosePassword;
 
 const string CardFile = "CardModel.csv";
@@ -12,8 +13,8 @@ switch (InputSwitch)
     case 1: //create new card
 
         var convertedCardType = CardInput.CardInputInfo();
-        TextConnection CardTextFile = new TextConnection();
-        CardTextFile.CreateCard(convertedCardType);
+        AddNewCardModelToCsv CardTextFile = new AddNewCardModelToCsv();
+        CardTextFile.AddModel(convertedCardType);
         Console.Read();
         break;
 
@@ -61,7 +62,7 @@ void password()
     Random generator = new Random();
     String r = generator.Next(100000, 1000000).ToString("D6");
     Console.WriteLine($"this is your password : {r}");
-    TextConnection PasswordTextFile = new TextConnection();
+    var passwordTextFile = new AddNewPasswordToCsv();
     ConvertToPassword password = new ConvertToPassword(r, DateTime.Now);
-    PasswordTextFile.CreatePassword(password);
+    passwordTextFile.AddModel(password);
 }

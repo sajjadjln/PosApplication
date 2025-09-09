@@ -4,7 +4,7 @@ using PoseLibrary.Models;
 
 namespace PosePassword
 {
-    public class ShowListCard : TextConnection
+    public class ShowListCard
     {
         public int SaveCardFlag { get; set; } = 1;
         public int CardOption { get; set; }
@@ -12,7 +12,7 @@ namespace PosePassword
 
         public void ShowInfo()
         {
-            var cardModel = CardFile.FullFilePath().LoadFile().ConvertFileToModel(new CardCsvConvertor());
+            var cardModel = "CardModel.csv".FullFilePath().LoadFile().ConvertFileToModel(new CardCsvConvertor());
             if (cardModel.Count == 0)
             {
                 Console.WriteLine("there is no saved card");

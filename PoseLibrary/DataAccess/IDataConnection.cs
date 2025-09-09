@@ -1,11 +1,8 @@
-﻿using PoseLibrary.Models;
-
-namespace PoseLibrary.DataAccess
+﻿namespace PoseLibrary.DataAccess
 {
-    public interface IDataConnection
+    public interface IDataConnection<T>
     {
-        CardModel CreateCard(CardModel model);
-        TransactionModel Transaction(TransactionModel model);
-        PasswordModel CreatePassword(PasswordModel model);
+        // here the implementation is only used not the interface what can we do about this
+        T AddModel(T entity);
     }
 }
