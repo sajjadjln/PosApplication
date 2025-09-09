@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PoseLibrary;
 using PoseLibrary.Models;
 
@@ -10,11 +5,10 @@ namespace PosePassword
 {
     public class EditCard
     {
-
-        public List<CardModel> EditCards(int chosenId,List<CardModel> cards)
+        public List<CardModel> EditCards(int chosenId, List<CardModel> cards)
         {
             List<CardModel> Cards = cards;
-                //inputting new info of the card
+            //inputting new info of the card
             Console.WriteLine($"your current card number is : {Cards[chosenId - 1].CardNumber}\n");
             Console.WriteLine("enter new card number : ");
             string? CardNumb = Console.ReadLine();
@@ -31,13 +25,10 @@ namespace PosePassword
             Console.WriteLine("enter new year date : ");
             string? YearNumb = Console.ReadLine();
             Console.Clear();
-             ConvertCardType convertedCardType = new ConvertCardType(
-                CardNumb,
-                Cvv2Numb,
-                MonthNumb,
-                YearNumb);
+            var convertedCardType = new CardModelBuilder().WithCardNumber(CardNumb).WithCvv(Cvv2Numb)
+                .WithDate(MonthNumb, YearNumb).Build();
 
-                // validating new info
+            // validating new info
             Validation.ValidationCartNumber(convertedCardType.CardNumber);
             Validation.ValidationCvv2(convertedCardType.Cvv2);
             Validation.ValidationDateMonth(convertedCardType.DateMonth);
@@ -46,7 +37,7 @@ namespace PosePassword
             Cards[chosenId - 1].CardNumber = convertedCardType.CardNumber;
             Cards[chosenId - 1].Cvv2 = convertedCardType.Cvv2;
             Cards[chosenId - 1].DateMonth = convertedCardType.DateMonth;
-            Cards[chosenId - 1].DateYear = convertedCardType.DateYear ;
+            Cards[chosenId - 1].DateYear = convertedCardType.DateYear;
 
             return Cards;
         }

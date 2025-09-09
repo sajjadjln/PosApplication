@@ -23,16 +23,15 @@ public class TransactionCsvConvertor : ICsvConvertor<TransactionModel>
     public List<TransactionModel> StringToCsvModel(List<string> csvModel)
     {
         var output = new List<TransactionModel>();
-        var transactionModel = new TransactionModel();
 
         foreach (var line in csvModel)
         {
             var cols = line.Split(',');
 
-            transactionModel.Id = int.Parse(cols[0]);
-            transactionModel.Amount = decimal.Parse(cols[1]);
-            transactionModel.State = cols[2];
-
+            var transactionModel = new TransactionModel(decimal.Parse(cols[1]), cols[2])
+            {
+                Id = int.Parse(cols[0]),
+            };
 
             output.Add(transactionModel);
         }

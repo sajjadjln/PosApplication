@@ -1,7 +1,7 @@
-﻿using PoseLibrary;
-using PoseLibrary.DataAccess;
+﻿using PoseLibrary.DataAccess;
 using PoseLibrary.DataAccess.CsvHandling.AddModelToCsv;
 using PoseLibrary.DataAccess.CsvHandling.CsvConvertor;
+using PoseLibrary.Models;
 using PosePassword;
 
 const string CardFile = "CardModel.csv";
@@ -63,6 +63,6 @@ void password()
     String r = generator.Next(100000, 1000000).ToString("D6");
     Console.WriteLine($"this is your password : {r}");
     var passwordTextFile = new AddNewPasswordToCsv();
-    ConvertToPassword password = new ConvertToPassword(r, DateTime.Now);
+    var password = new PasswordModel(r, DateTime.Now);
     passwordTextFile.AddModel(password);
 }

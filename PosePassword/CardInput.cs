@@ -1,15 +1,11 @@
 ﻿using PoseLibrary;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PoseLibrary.Models;
 
 namespace PosePassword
 {
     public static class CardInput
     {
-        public static ConvertCardType CardInputInfo()
+        public static CardModel CardInputInfo()
         {
             Console.WriteLine("please Enter your card number: ");
             string? CardNumberInput = Console.ReadLine();
@@ -21,11 +17,8 @@ namespace PosePassword
             string? DateYearInput = Console.ReadLine();
 
             //converting all the input string types to CardModel types
-            ConvertCardType convertedCardType = new ConvertCardType(
-                CardNumberInput,
-                Cvv2Input,
-                DateMonthInput,
-                DateYearInput);
+            var convertedCardType = new CardModelBuilder().WithCardNumber(CardNumberInput).WithCvv(Cvv2Input)
+                .WithDate(DateMonthInput, DateYearInput).Build();
 
             //validating each of the inputs
             Validation.ValidationCartNumber(convertedCardType.CardNumber);

@@ -23,13 +23,13 @@ public class PasswordCsvConvertor : ICsvConvertor<PasswordModel>
     public List<PasswordModel> StringToCsvModel(List<string> csvModel)
     {
         var models = new List<PasswordModel>();
-        var password = new PasswordModel();
         foreach (var item in csvModel)
         {
             var cols = item.Split(',');
-            password.Id = int.Parse(cols[0]);
-            password.Password = cols[1];
-            password.DateTime = DateTime.Parse(cols[2]);
+            var password = new PasswordModel(cols[1], DateTime.Parse(cols[2]))
+            {
+                Id = int.Parse(cols[0])
+            };
             models.Add(password);
         }
 
