@@ -1,7 +1,6 @@
 ﻿using PoseLibrary;
 using PoseLibrary.DataAccess;
-using PoseLibrary.DataAccess.CsvHandling;
-using PoseLibrary.Models;
+using PoseLibrary.DataAccess.CsvHandling.CsvConvertor;
 using PosePassword;
 
 const string CardFile = "CardModel.csv";

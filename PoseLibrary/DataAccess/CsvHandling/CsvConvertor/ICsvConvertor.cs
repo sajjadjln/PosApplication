@@ -1,4 +1,4 @@
-namespace PoseLibrary.DataAccess.CsvHandling;
+namespace PoseLibrary.DataAccess.CsvHandling.CsvConvertor;
 
 public interface ICsvConvertor<T>
 {

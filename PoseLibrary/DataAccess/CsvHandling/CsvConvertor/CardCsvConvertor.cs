@@ -1,6 +1,6 @@
 using PoseLibrary.Models;
 
-namespace PoseLibrary.DataAccess.CsvHandling;
+namespace PoseLibrary.DataAccess.CsvHandling.CsvConvertor;
 
 public class CardCsvConvertor : ICsvConvertor<CardModel>
 {
