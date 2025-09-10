@@ -11,7 +11,10 @@ public class CardModelBuilder
 
     public CardModelBuilder WithCardNumber(string cardNumber)
     {
-        _cardNumber = cardNumber ?? throw new ArgumentNullException(nameof(cardNumber));
+        var result = CardValidator.ValidateCardNumber(cardNumber);
+        if (!result.IsValid)
+            throw new ArgumentException(result.ErrorMessage);
+        _cardNumber = cardNumber;
         return this;
     }
 
@@ -19,24 +22,33 @@ public class CardModelBuilder
     {
         if (!int.TryParse(cvv, out var cvvValue))
             throw new ArgumentException("Invalid CVV format");
+        
+        var result = CardValidator.ValidateCvv(cvvValue);
+        if (!result.IsValid)
+            throw new ArgumentException(result.ErrorMessage);
+            
         _cvv2 = cvvValue;
         return this;
     }
 
     public CardModelBuilder WithDate(string dateMonth, string dateYear)
     {
-        if (!int.TryParse(dateMonth, out var dateMonthValue))
-            throw new ArgumentException("Invalid date month format");
-        if (!int.TryParse(dateYear, out var dateYearValue))
-            throw new ArgumentException("Invalid date year format");
-        _dateMonth = dateMonthValue;
-        _dateYear = dateYearValue;
+        if (!int.TryParse(dateMonth, out var monthValue) || 
+            !int.TryParse(dateYear, out var yearValue))
+            throw new ArgumentException("Date values must be numeric");
+            
+        var result = CardValidator.ValidateExpiryDate(monthValue, yearValue);
+        if (!result.IsValid)
+            throw new ArgumentException(result.ErrorMessage);
+            
+        _dateMonth = monthValue;
+        _dateYear = yearValue;
         return this;
+
     }
 
     public CardModel Build()
     {
-        //       ValidateCard(_card);
         return new CardModel
         {
             CardNumber = _cardNumber,

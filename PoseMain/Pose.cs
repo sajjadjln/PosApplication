@@ -1,5 +1,4 @@
-﻿using PoseLibrary;
-using PoseLibrary.DataAccess;
+﻿using PoseLibrary.DataAccess;
 using PoseLibrary.DataAccess.CsvHandling.CsvConvertor;
 using PosePassword;
 
@@ -22,7 +21,7 @@ switch (InputSwitch)
             {
                 Console.WriteLine("Enter your password");
                 string? InputPassword = Console.ReadLine();
-                Validation.ValidationPassword(InputPassword);
+//                CardValidator.ValidatePassword(InputPassword); for now the validation for password not work here till fix
                 var password = PasswordFile.FullFilePath().LoadFile().ConvertFileToModel(new PasswordCsvConvertor());
                 TransactionProcess TransactionResult = new TransactionProcess(
                     password, InputPassword, Money1.Amount);
@@ -38,7 +37,7 @@ switch (InputSwitch)
         var convertedCardType = CardInput.CardInputInfo();
         Console.WriteLine("Enter your password");
         string? InputPassword2 = Console.ReadLine();
-        Validation.ValidationPassword(InputPassword2);
+        //    Validation.ValidationPassword(InputPassword2);  for now the validation for password not work here till fix
         var passwordFileString2 = PasswordFile.FullFilePath().LoadFile();
         var password2 = passwordFileString2.ConvertFileToModel(new PasswordCsvConvertor());
 

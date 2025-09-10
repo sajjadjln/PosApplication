@@ -25,19 +25,17 @@ namespace PosePassword
             Console.WriteLine("enter new year date : ");
             string? YearNumb = Console.ReadLine();
             Console.Clear();
-            var convertedCardType = new CardModelBuilder().WithCardNumber(CardNumb).WithCvv(Cvv2Numb)
-                .WithDate(MonthNumb, YearNumb).Build();
 
-            // validating new info
-            Validation.ValidationCartNumber(convertedCardType.CardNumber);
-            Validation.ValidationCvv2(convertedCardType.Cvv2);
-            Validation.ValidationDateMonth(convertedCardType.DateMonth);
-            Validation.ValidationDateYear(convertedCardType.DateYear);
+            var card = new CardModelBuilder()
+                .WithCardNumber(CardNumb)
+                .WithCvv(Cvv2Numb)
+                .WithDate(MonthNumb, YearNumb)
+                .Build();
 
-            Cards[chosenId - 1].CardNumber = convertedCardType.CardNumber;
-            Cards[chosenId - 1].Cvv2 = convertedCardType.Cvv2;
-            Cards[chosenId - 1].DateMonth = convertedCardType.DateMonth;
-            Cards[chosenId - 1].DateYear = convertedCardType.DateYear;
+            Cards[chosenId - 1].CardNumber = card.CardNumber;
+            Cards[chosenId - 1].Cvv2 = card.Cvv2;
+            Cards[chosenId - 1].DateMonth = card.DateMonth;
+            Cards[chosenId - 1].DateYear = card.DateYear;
 
             return Cards;
         }

@@ -7,25 +7,35 @@ namespace PosePassword
     {
         public static CardModel CardInputInfo()
         {
-            Console.WriteLine("please Enter your card number: ");
-            string? CardNumberInput = Console.ReadLine();
-            Console.WriteLine("please Enter your Cvv2 number: ");
-            string? Cvv2Input = Console.ReadLine();
-            Console.WriteLine("please Enter your card expire month date: ");
-            string? DateMonthInput = Console.ReadLine();
-            Console.WriteLine("please Enter your card expire year date: ");
-            string? DateYearInput = Console.ReadLine();
+            try
+            {
+                Console.WriteLine("Please enter your card number: ");
+                string? cardNumberInput = Console.ReadLine();
 
-            //converting all the input string types to CardModel types
-            var convertedCardType = new CardModelBuilder().WithCardNumber(CardNumberInput).WithCvv(Cvv2Input)
-                .WithDate(DateMonthInput, DateYearInput).Build();
+                Console.WriteLine("Please enter your CVV2 number: ");
+                string? cvv2Input = Console.ReadLine();
 
-            //validating each of the inputs
-            Validation.ValidationCartNumber(convertedCardType.CardNumber);
-            Validation.ValidationCvv2(convertedCardType.Cvv2);
-            Validation.ValidationDateMonth(convertedCardType.DateMonth);
-            Validation.ValidationDateYear(convertedCardType.DateYear);
-            return convertedCardType;
+                Console.WriteLine("Please enter your card expire month: ");
+                string? dateMonthInput = Console.ReadLine();
+
+                Console.WriteLine("Please enter your card expire year: ");
+                string? dateYearInput = Console.ReadLine();
+
+                // Validation happens INSIDE the builder now
+                var card = new CardModelBuilder()
+                    .WithCardNumber(cardNumberInput)
+                    .WithCvv(cvv2Input)
+                    .WithDate(dateMonthInput, dateYearInput)
+                    .Build();
+
+                return card;
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine("Please try again.\n");
+                return CardInputInfo(); // Recursive retry
+            }
         }
     }
 }
