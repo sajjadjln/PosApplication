@@ -5,7 +5,7 @@ namespace PoseLibrary.DataAccess.CsvHandling.AddModelToCsv;
 
 public class AddNewCardModelToCsv : IDataConnection<CardModel>
 {
-    public CardModel AddModel(CardModel model)
+    public CardModel AddModelToFile(CardModel model)
     {
         var lastId = TextConnectorProcessor.GetNextIdFromLastLine(GlobalSettings.CardFile.FullFilePath());
         model.Id = lastId;

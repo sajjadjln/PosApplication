@@ -40,22 +40,4 @@ public static class CardValidator
 
         return ValidationResult.Success();
     }
-
-    public static ValidationResult ValidatePassword(string? password)
-    {
-        if (password == null)
-            return ValidationResult.Failure("Password cannot be empty");
-        if (password.Length < 6)
-            return ValidationResult.Failure("Password must be 6 digits");
-        if (!password.All(Char.IsDigit))
-            return ValidationResult.Failure("wrong password!");
-
-        return ValidationResult.Success();
-    }
-}
-
-public record ValidationResult(bool IsValid, string? ErrorMessage = null)
-{
-    public static ValidationResult Success() => new(true);
-    public static ValidationResult Failure(string message) => new(false, message);
 }
