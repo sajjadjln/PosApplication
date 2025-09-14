@@ -5,7 +5,7 @@ namespace PoseLibrary.DataAccess.CsvHandling.AddModelToCsv;
 
 public class AddNewTransactionToCsv : IDataConnection<TransactionModel>
 {
-    public TransactionModel AddModel(TransactionModel model)
+    public TransactionModel AddModelToFile(TransactionModel model)
     {
         var lastId = TextConnectorProcessor.GetNextIdFromLastLine(GlobalSettings.TransactionFile.FullFilePath());
         model.Id = lastId;

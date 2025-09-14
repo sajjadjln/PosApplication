@@ -14,7 +14,7 @@ switch (InputSwitch)
 
         var convertedCardType = CardInput.CardInputInfo();
         AddNewCardModelToCsv CardTextFile = new AddNewCardModelToCsv();
-        CardTextFile.AddModel(convertedCardType);
+        CardTextFile.AddModelToFile(convertedCardType);
         Console.Read();
         break;
 
@@ -64,5 +64,5 @@ void password()
     Console.WriteLine($"this is your password : {r}");
     var passwordTextFile = new AddNewPasswordToCsv();
     var password = new PasswordModel(r, DateTime.Now);
-    passwordTextFile.AddModel(password);
+    passwordTextFile.AddModelToFile(password);
 }

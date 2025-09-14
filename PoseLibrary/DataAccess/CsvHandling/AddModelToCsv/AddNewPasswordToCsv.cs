@@ -5,7 +5,7 @@ namespace PoseLibrary.DataAccess.CsvHandling.AddModelToCsv;
 
 public class AddNewPasswordToCsv : IDataConnection<PasswordModel>
 {
-    public PasswordModel AddModel(PasswordModel model)
+    public PasswordModel AddModelToFile(PasswordModel model)
     {
         var lastId = TextConnectorProcessor.GetNextIdFromLastLine(GlobalSettings.PasswordFile.FullFilePath());
         model.Id = lastId;
